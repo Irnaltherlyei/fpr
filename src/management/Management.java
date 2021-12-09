@@ -1,8 +1,8 @@
 package management;
 
 import staff.*;
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 
@@ -19,20 +19,19 @@ public class Management {
         pa.addEmployee(new Employee(104,"Louis", new Date(), 1700));
         pa.addEmployee(new Manager(101,"Adrian", new Date(), 2500,1000));
 
-        pa.print();
-
         Collections.sort(pa.personalList);
 
-        pa.print();
-
-        System.out.println("Highetst paid: " + pa.getLowestPaid().toString());
-        System.out.println("Lowest paid: " + pa.getHighestPaid().toString());
+        System.out.println("Highetst paid: " + pa.getHighestPaid());
+        System.out.println("Lowest paid: " + pa.getLowestPaid());
 
         pa.getHighestPaid().raise(2f);
+
         pa.removeEmployee(pa.getLowestPaid());
         pa.removeEmployee(pa.getLowestPaid());
 
         pa.print();
+
+        System.out.println(pa.getHighestLowestManager().toString());
     }
 
     public Management(){
@@ -64,12 +63,27 @@ public class Management {
     }
 
     public Staff getLowestPaid(){
-        personalList.sort((x, y) -> x.compareTo(y));
+        personalList.sort((x, y) -> y.compareTo(x));
         return personalList.get(0);
     }
 
     public Staff getHighestPaid(){
-        personalList.sort((x, y) -> y.compareTo(x));
+        personalList.sort((x, y) -> x.compareTo(y));
+
         return personalList.get(0);
+    }
+
+    public Pair<Manager, Manager> getHighestLowestManager(){
+        Manager lowest = null, highest = null;
+        personalList.sort((x, y) -> y.compareTo(y));
+        for (Staff s:personalList) {
+            if (s.getClass().isAssignableFrom(Manager.class)) {
+                if(highest == null){
+                    highest = (Manager)s;
+                }
+                lowest = (Manager)s;
+            }
+        }
+        return new Pair<>(highest, lowest);
     }
 }

@@ -23,6 +23,10 @@ public abstract class Staff implements Comparable<Staff>, Person{
         return name;
     }
 
+    public int getSalary() {
+        return salary;
+    }
+
     @Override
     public int compareTo(Staff s) {
         if(s.salary > this.salary){
