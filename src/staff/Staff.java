@@ -18,6 +18,10 @@ public abstract class Staff implements Comparable<Staff>, Person{
         salary*= factor;
     }
 
+    public int getpID() {
+        return pID;
+    }
+
     @Override
     public String getName() {
         return name;
