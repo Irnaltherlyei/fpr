@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 public class App {
     public static void main(String[] args) {
-        Path source = Paths.get("C:/Users/Adrian/Desktop/book.txt");
+        Path source = Paths.get("src/book.txt");
         Scanner in = null;
         try {
             in = new Scanner(source);
