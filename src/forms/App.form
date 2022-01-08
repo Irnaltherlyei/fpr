@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="forms.App">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridBagLayout">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="f55aa" class="javax.swing.JList" binding="dataList">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+          <gridbag weightx="1.0" weighty="1.0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="e8b5" class="javax.swing.JButton" binding="refreshButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Refresh"/>
+        </properties>
+      </component>
+      <component id="4b0ca" class="javax.swing.JButton" binding="addButton">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Add"/>
+        </properties>
+      </component>
+      <grid id="72950" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="b5829" class="javax.swing.JButton" binding="descendingButton">
+            <constraints/>
+            <properties>
+              <text value="Descending"/>
+            </properties>
+          </component>
+          <component id="db2c7" class="javax.swing.JButton" binding="ascendingButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Ascending"/>
+            </properties>
+          </component>
+          <component id="67d" class="javax.swing.JButton" binding="paidHighestButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Paid highest"/>
+            </properties>
+          </component>
+          <component id="2924d" class="javax.swing.JButton" binding="paidLowestButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Paid lowest"/>
+            </properties>
+          </component>
+          <component id="338b9" class="javax.swing.JButton" binding="managerButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Manager"/>
+              <toolTipText value="Get highest and lowest paid Managers"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="845ac" class="javax.swing.JButton" binding="deleteButton">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="1.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Delete"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

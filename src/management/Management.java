@@ -2,26 +2,24 @@ package management;
 
 import staff.*;
 
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class Management {
 
-    public HashMap<Integer, Staff> personalMap;
+    public ArrayList<Staff> personalList;
 
     public static void main(String[] args) {
         Management pa = new Management();
 
-        pa.addEmployee(new Employee(2104,"Freddy", new Date(), 2000));
-        pa.addEmployee(new Employee(2103,"José", new Date(), 1800));
-        pa.addEmployee(new Employee(2102,"Jan", new Date(), 1900));
-        pa.addEmployee(new Employee(2101,"Louis", new Date(), 1700));
-        pa.addEmployee(new Manager(1101,"Adrian", new Date(), 2500,1000));
-        pa.addEmployee(new Manager(1102,"X Æ A-XII", new Date(), 2000,800));
+        pa.addEmployee(new Employee(105,"Freddy", new Date(), 2000));
+        pa.addEmployee(new Employee(103,"José", new Date(), 1800));
+        pa.addEmployee(new Employee(102,"Jan", new Date(), 1900));
+        pa.addEmployee(new Employee(104,"Louis", new Date(), 1700));
+        pa.addEmployee(new Manager(101,"Adrian", new Date(), 2500,1000));
 
-        //Collections.sort(pa.personalList);
+        Collections.sort(pa.personalList);
 
         System.out.println("Highetst paid: " + pa.getHighestPaid());
         System.out.println("Lowest paid: " + pa.getLowestPaid());
@@ -37,34 +35,52 @@ public class Management {
     }
 
     public Management(){
-        personalMap = new HashMap<Integer, Staff>();
+        personalList = new ArrayList<Staff>();
+        personalList.add(new Employee(105,"Freddy", new Date(), 2000));
+        personalList.add(new Employee(103,"José", new Date(), 1800));
+        personalList.add(new Employee(102,"Jan", new Date(), 1900));
+        personalList.add(new Employee(104,"Louis", new Date(), 1700));
+        personalList.add(new Manager(101,"Adrian", new Date(), 2500,1000));
     }
 
     public void addEmployee(Staff p){
-        personalMap.put(p.getpID(), p);
+        if(!exists(p))
+            personalList.add(p);
     }
 
-    public void removeEmployee(Staff p){
-        if (personalMap.remove(p.getpID()) != null)
+    public void removeEmployee(Object p){
+        if(exists(p))
             System.out.println("Removed " + p.toString());
+        personalList.remove(p);
     }
 
     public void print() {
-        personalMap.values().forEach(x -> System.out.println(x.toString()));
+        personalList.forEach(x -> System.out.println(x.toString()));
+    }
+
+    public boolean exists(Object p){
+        for (Staff person: personalList) {
+            if (person.equals(p)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Staff getLowestPaid(){
-        return personalMap.entrySet().stream().sorted(HashMap.Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toList()).get(0).getValue();
+        personalList.sort((x, y) -> y.compareTo(x));
+        return personalList.get(0);
     }
 
     public Staff getHighestPaid(){
-        return personalMap.entrySet().stream().sorted(HashMap.Entry.comparingByValue()).collect(Collectors.toList()).get(0).getValue();
+        personalList.sort((x, y) -> x.compareTo(y));
+        return personalList.get(0);
     }
 
     public Pair<Manager, Manager> getHighestLowestManager(){
         Manager lowest = null, highest = null;
-        for (Staff s :
-                personalMap.values().stream().sorted().collect(Collectors.toList())) {
+        personalList.sort((x, y) -> y.compareTo(y));
+        for (Staff s:personalList) {
             if (s.getClass().isAssignableFrom(Manager.class)) {
                 if(highest == null){
                     highest = (Manager)s;
