@@ -1,11 +1,21 @@
 package vehicles;
 
+/**
+ * Provides a foundation for cars
+ */
 public abstract class Fahrzeug implements Comparable<Fahrzeug> {
     private int ID;
     private String model;
     private int price;
     private int speed;
 
+    /**
+     * Class constructor
+     * @param ID as unique car ID
+     * @param model as model name
+     * @param price as daily rent price
+     * @param speed as max speed
+     */
     public Fahrzeug(int ID, String model, int price, int speed) {
         this.ID = ID;
         this.model = model;
@@ -13,6 +23,12 @@ public abstract class Fahrzeug implements Comparable<Fahrzeug> {
         this.speed = speed;
     }
 
+    /**
+     * Implements the compareTo method from the comparable interface.
+     * Allows to sort a list of {@link Fahrzeug}
+     * @param o as a {@link Fahrzeug}
+     * @return
+     */
     @Override
     public int compareTo(Fahrzeug o) {
         if(o.price > this.price)
@@ -44,6 +60,5 @@ public abstract class Fahrzeug implements Comparable<Fahrzeug> {
     public int getSpeed() {
         return speed;
     }
-
 }
 
