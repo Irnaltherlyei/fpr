@@ -24,8 +24,8 @@ public class Fuhrpark {
         s += "Fuhrpark{\n";
         for (Map.Entry<Integer,RentDay> i :
                 rentMap.entrySet()) {
-            s += i.getKey();
-            s += '{';
+            s += "Day " + i.getKey();
+            s += "{";
             s += '\n';
             s += i.getValue();
             s += '\n';

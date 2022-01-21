@@ -3,17 +3,19 @@ package control;
 import vehicles.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class RentDay {
     private ArrayList<Fahrzeug> rentedOut;
+    private Comparator<Fahrzeug> comparator = Comparator.reverseOrder();
 
     // Fester Carpool
-    private static ArrayList<Fahrzeug> carPool = new ArrayList<Fahrzeug>() {{
-        add(new PKW(101, "X1", 100, 220, 5));
-        add(new PKW(102, "X2", 110, 230, 5));
+    private ArrayList<Fahrzeug> carPool = new ArrayList<Fahrzeug>() {{
+        add(new PKW(101, "X1", 100, 420, 5));
+        add(new PKW(102, "X2", 110, 330, 5));
         add(new PKW(103, "X3", 120, 240, 6));
-        add(new PKW(104, "X4", 130, 250, 6));
+        add(new PKW(104, "X4", 130, 150, 6));
 
         add(new EPKW(201, "Y1", 200, 260, 5, 600));
         add(new EPKW(202, "Y2", 225, 270, 5, 800));
@@ -50,16 +52,16 @@ public class RentDay {
             carPool.add(f);
             return f;
         }
-
         return null;
     }
 
-    public void sortAscending(){
-        rentedOut.sort((x, y) -> x.compareTo(y));
-    }
-
-    public void sortDescending(){
-        rentedOut.sort((x, y) -> y.compareTo(x));
+    public Integer sumRent(){
+        Integer sum = 0;
+        for (Fahrzeug f :
+                rentedOut) {
+            sum += f.getPrice();
+        }
+        return sum;
     }
 
     public Fahrzeug IDtoObject(Integer ID, ArrayList<Fahrzeug> list){
@@ -71,8 +73,16 @@ public class RentDay {
         return null;
     }
 
+    public void setSortSpeed(){
+        comparator = Comparator.comparing(Fahrzeug::getSpeed);
+    }
+
+    public void setSortNormal(){
+        comparator = Comparator.reverseOrder();
+    }
+
     @Override
     public String toString() {
-        return rentedOut.stream().sorted((x, y) -> x.compareTo(y)).map(Object::toString).collect(Collectors.joining("\n"));
+        return rentedOut.stream().sorted(comparator).map(Object::toString).collect(Collectors.joining("\n"));
     }
 }
