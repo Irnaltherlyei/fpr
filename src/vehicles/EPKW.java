@@ -18,8 +18,4 @@ public class EPKW extends PKW{
     public int getMaxReach() {
         return maxReach;
     }
-
-    public void setMaxReach(int maxReach) {
-        this.maxReach = maxReach;
-    }
 }

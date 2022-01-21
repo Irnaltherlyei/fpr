@@ -18,8 +18,4 @@ public class LKW extends Fahrzeug {
     public int getCargo() {
         return cargo;
     }
-
-    public void setCargo(int cargo) {
-        this.cargo = cargo;
-    }
 }

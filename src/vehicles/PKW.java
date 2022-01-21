@@ -18,8 +18,4 @@ public class PKW extends Fahrzeug {
     public int getCountSeats() {
         return countSeats;
     }
-
-    public void setCountSeats(int countSeats) {
-        this.countSeats = countSeats;
-    }
 }
