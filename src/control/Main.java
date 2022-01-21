@@ -1,3 +1,9 @@
+/**
+ * @author Adrian Kaminski
+ * See <a href="http://google.com">http://google.com</a> to get to the GitHub Repository.
+ *
+ * Contains classes to manage cars in the Fuhrpark.
+ */
 package control;
 
 /**

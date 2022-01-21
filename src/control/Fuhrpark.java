@@ -20,7 +20,7 @@ public class Fuhrpark {
      * Add a day with rented out cars to the Fuhrpark.
      *
      * @param ID as day ID
-     * @param rentDay
+     * @param rentDay as day with rented out cars.
      */
     public void addRentDay(Integer ID, RentDay rentDay){
         rentMap.putIfAbsent(ID, rentDay);
