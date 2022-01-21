@@ -53,6 +53,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/control/package-info.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/package-info.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/vehicles/EPKW.java">
           <value>
             <set />
@@ -79,6 +89,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/vehicles/Vehicles.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/vehicles/package-info.java">
           <value>
             <set />
           </value>
