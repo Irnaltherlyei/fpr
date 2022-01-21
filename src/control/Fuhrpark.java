@@ -36,19 +36,44 @@ public class Fuhrpark {
         return rentMap.remove(ID);
     }
 
+    /**
+     * Remove all days cars got rented out.
+     */
+    public void deleteAll(){
+        rentMap.clear();
+    }
+
+    /**
+     * Deletes a rent day if it has no cars rented out.
+     */
+    public void check(Integer ID){
+        if(rentMap.get(ID).isEmpty()){
+            rentMap.remove(ID);
+        }
+    }
+
+    public RentDay getRentDay(Integer ID){
+        return rentMap.get(ID);
+    }
+
+    public HashMap<Integer,RentDay> getMap(){
+        return rentMap;
+    }
+
     @Override
     public String toString() {
         String s = "";
-        s += "Fuhrpark{\n";
+        s += "Fuhrpark{";
         for (Map.Entry<Integer,RentDay> i :
                 rentMap.entrySet()) {
-            s += "Day " + i.getKey();
+            s += "\nDay " + i.getKey();
             s += "{";
             s += '\n';
             s += i.getValue();
             s += '\n';
-            s += "}\n";
+            s += "}";
         }
+        s += "\n}";
         return s;
     }
 }

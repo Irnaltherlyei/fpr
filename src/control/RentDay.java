@@ -108,10 +108,28 @@ public class RentDay {
     }
 
     /**
-     * Sets the comparator in {@link RentDay#toString()} to sort by Speed. Ascending.
+     * Checks if list of rented out cars is empty.
+     * @return true if empty
+     */
+    public boolean isEmpty(){
+        if(rentedOut.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Sets the comparator in {@link RentDay#toString()} to sort by speed. Ascending.
      */
     public void setSortSpeed(){
         comparator = Comparator.comparing(Fahrzeug::getSpeed);
+    }
+
+    /**
+     * Sets the comparator in {@link RentDay#toString()} to sort by price. Ascending.
+     */
+    public void setSortNormal(){
+        comparator = Comparator.reverseOrder();
     }
 
     @Override
