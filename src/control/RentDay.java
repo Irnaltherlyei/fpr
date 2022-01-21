@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
+/**
+ * Class representing a day in the Fuhrpark cars being rented out.
+ */
 public class RentDay {
     private ArrayList<Fahrzeug> rentedOut;
     private Comparator<Fahrzeug> comparator = Comparator.reverseOrder();
 
-    // Fester Carpool
+    /**
+     * Fix car pool with defined cars.
+     */
     private ArrayList<Fahrzeug> carPool = new ArrayList<Fahrzeug>() {{
         add(new PKW(101, "X1", 100, 420, 5));
         add(new PKW(102, "X2", 110, 330, 5));
@@ -29,10 +34,20 @@ public class RentDay {
         add(new LKW(306, "Z6", 600, 150, 20000));
     }};
 
+    /**
+     * Class constructor creates a list with all cars being rented out.
+     */
     public RentDay() {
         rentedOut = new ArrayList<Fahrzeug>();
     }
 
+    /**
+     * Adds the specific car with the given ID to the list
+     * and removes the car from the car pool.
+     *
+     * @param ID as unique car ID
+     * @return true if car could be added
+     */
     public boolean add(Integer ID){
         Fahrzeug f = IDtoObject(ID, carPool);
 
@@ -43,6 +58,13 @@ public class RentDay {
         return false;
     }
 
+    /**
+     * Removes the specific car with the given ID from the list
+     * and adds the car to the car pool.
+     *
+     * @param ID as unique car ID
+     * @return the car which got removed
+     */
     public Fahrzeug remove(Integer ID){
         Fahrzeug f = IDtoObject(ID, rentedOut);
 
@@ -55,6 +77,11 @@ public class RentDay {
         return null;
     }
 
+    /**
+     * Sums up the rent of all cars rented out.
+     *
+     * @return the sum of rent collected
+     */
     public Integer sumRent(){
         Integer sum = 0;
         for (Fahrzeug f :
@@ -64,6 +91,13 @@ public class RentDay {
         return sum;
     }
 
+    /**
+     * Looks for the specific car with the given ID in the given list.
+     *
+     * @param ID as unique car ID
+     * @param list as a list of cars
+     * @return the found car if existing
+     */
     public Fahrzeug IDtoObject(Integer ID, ArrayList<Fahrzeug> list){
         for (Fahrzeug f : list) {
             if(f.getID() == ID){
@@ -73,12 +107,11 @@ public class RentDay {
         return null;
     }
 
+    /**
+     * Sets the comparator in {@link RentDay#toString()} to sort by Speed. Ascending.
+     */
     public void setSortSpeed(){
         comparator = Comparator.comparing(Fahrzeug::getSpeed);
-    }
-
-    public void setSortNormal(){
-        comparator = Comparator.reverseOrder();
     }
 
     @Override

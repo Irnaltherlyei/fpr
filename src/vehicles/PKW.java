@@ -1,7 +1,7 @@
 package vehicles;
 
 /**
- * This class represents a car
+ * This class represents a car.
  */
 public class PKW extends Fahrzeug {
     int countSeats;

@@ -1,7 +1,7 @@
 package vehicles;
 
 /**
- * This class represents an electrical car
+ * This class represents an electrical car.
  */
 public class EPKW extends PKW{
     int maxReach;

@@ -1,7 +1,14 @@
 package control;
 
+/**
+ * Main
+ */
 public class Main {
 
+    /**
+     * Creates a Fuhrpark and adds some cars.
+     * @param args not used yet.
+     */
     public static void main(String[] args) {
         Fuhrpark fp = new Fuhrpark();
 

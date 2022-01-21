@@ -1,7 +1,7 @@
 package vehicles;
 
 /**
- * Provides a foundation for cars
+ * Provides a foundation for cars.
  */
 public abstract class Fahrzeug implements Comparable<Fahrzeug> {
     private int ID;
@@ -10,7 +10,7 @@ public abstract class Fahrzeug implements Comparable<Fahrzeug> {
     private int speed;
 
     /**
-     * Class constructor
+     * Class constructor.
      * @param ID as unique car ID
      * @param model as model name
      * @param price as daily rent price

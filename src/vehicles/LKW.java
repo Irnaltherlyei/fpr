@@ -1,7 +1,7 @@
 package vehicles;
 
 /**
- * This class represents a truck
+ * This class represents a truck.
  */
 public class LKW extends Fahrzeug {
     int cargo;
