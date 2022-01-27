@@ -15,8 +15,6 @@ public class Main {
     public static void main(String[] args) {
         Fuhrpark fp = new Fuhrpark();
 
-        exampleFill(fp);
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Use any commands.");
         System.out.println("Type 'info' for a list of commands.");
@@ -39,7 +37,8 @@ public class Main {
                         System.out.println(" 7. removeCarFromDay 'CAR_ID' 'DAY_ID' - Removes from a day in the Fuhrpark.");
                         System.out.println(" 8. sumRentDay 'DAY_ID'                - Sums up all rent collected in a day.");
                         System.out.println(" 9. sumRent                            - Sums up all rent collected.");
-                        System.out.println("10. exit                               - Terminates the process.");
+                        System.out.println("10. exampleFill                        - Fills the Fuhrpark with some days and cars.");
+                        System.out.println("11. exit                               - Terminates the process.");
                         break;
 
                     case "deletealldays":
@@ -51,7 +50,7 @@ public class Main {
                         if(splitCommand.length != 2){
                             System.out.println("Wrong number of arguments provided.");
                         } else {
-                            int DAY_ID = Integer.parseInt(splitCommand[1]);
+                            int DAY_ID = isInt(splitCommand[1]);
                             if(fp.deleteRentDay(DAY_ID) != null){
                                 System.out.println("Deleted Day " + DAY_ID);
                             } else {
@@ -64,10 +63,10 @@ public class Main {
                         if(splitCommand.length < 3){
                             System.out.println("Wrong number of arguments provided.");
                         } else {
-                            int DAY_ID = Integer.parseInt(splitCommand[1]);
+                            int DAY_ID = isInt(splitCommand[1]);
                             RentDay rd = new RentDay();
                             for (int i = 2; i < splitCommand.length; i++) {
-                                if(!rd.add(Integer.parseInt(splitCommand[i]))){
+                                if(!rd.add(isInt(splitCommand[i]))){
                                     System.out.println("No car with ID " + splitCommand[i] + " exists. Command canceled.");
                                 } else {
                                     System.out.println("Added day " + DAY_ID);
@@ -81,13 +80,13 @@ public class Main {
                         if(splitCommand.length < 3){
                             System.out.println("Wrong number of arguments provided.");
                         } else {
-                            int DAY_ID = Integer.parseInt(splitCommand[1]);
+                            int DAY_ID = isInt(splitCommand[1]);
                             RentDay rd = fp.getRentDay(DAY_ID);
                             if(rd == null){
                                 System.out.println("Day does not exist yet. Add a day with 'addDay 'DAY_ID' [CAR_ID]'.");
                             } else {
                                 for (int i = 2; i < splitCommand.length; i++) {
-                                    if(!rd.add(Integer.parseInt(splitCommand[i]))){
+                                    if(!rd.add(isInt(splitCommand[i]))){
                                         System.out.println("No car with ID " + splitCommand[i] + " exists. Command canceled.");
                                     } else {
                                         System.out.println("Added car " + splitCommand[i] + " to day " + DAY_ID);
@@ -101,13 +100,13 @@ public class Main {
                         if(splitCommand.length < 3){
                             System.out.println("Wrong number of arguments provided.");
                         } else {
-                            int DAY_ID = Integer.parseInt(splitCommand[1]);
+                            int DAY_ID = isInt(splitCommand[1]);
                             RentDay rd = fp.getRentDay(DAY_ID);
                             if(rd == null){
                                 System.out.println("Day does not exist.");
                             } else {
                                 for (int i = 2; i < splitCommand.length; i++) {
-                                    if(rd.remove(Integer.parseInt(splitCommand[i])) == null){
+                                    if(rd.remove(isInt(splitCommand[i])) == null){
                                         System.out.println("No car with ID " + splitCommand[i] + " exists. Command canceled.");
                                     } else {
                                         fp.check(DAY_ID);
@@ -122,7 +121,7 @@ public class Main {
                         if(splitCommand.length != 2){
                             System.out.println("Wrong number of arguments provided.");
                         } else {
-                            int DAY_ID = Integer.parseInt(splitCommand[1]);
+                            int DAY_ID = isInt(splitCommand[1]);
                             RentDay rd = fp.getRentDay(DAY_ID);
                             if(rd == null){
                                 System.out.println("Day does not exist.");
@@ -145,7 +144,7 @@ public class Main {
                         if(splitCommand.length != 3){
                             System.out.println("Wrong number of arguments provided.");
                         } else {
-                            int DAY_ID = Integer.parseInt(splitCommand[1]);
+                            int DAY_ID = isInt(splitCommand[1]);
                             RentDay rd = fp.getRentDay(DAY_ID);
                             if (rd == null) {
                                 System.out.println("Day does not exist.");
@@ -165,6 +164,10 @@ public class Main {
 
                     case "show":
                         System.out.println(fp);
+                        break;
+
+                    case "examplefill":
+                        exampleFill(fp);
                         break;
 
                     case "exit":
@@ -202,5 +205,19 @@ public class Main {
         rd2.add(202);
         rd2.add(203);
         fp.addRentDay(2, rd2);
+    }
+
+    /**
+     * Checks if a string is numeric
+     * @param s as string to check
+     * @return true or false
+     */
+    public static int isInt(String s){
+        try {
+            int i = Integer.parseInt(s);
+            return i;
+        } catch(NumberFormatException e){
+            return Integer.MIN_VALUE;
+        }
     }
 }

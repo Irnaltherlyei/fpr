@@ -31,7 +31,7 @@ public abstract class Fahrzeug implements Comparable<Fahrzeug> {
      */
     @Override
     public int compareTo(Fahrzeug o) {
-        if(o.price > this.price)
+        if(o.price < this.price)
             return 1;
         else
             return -1;

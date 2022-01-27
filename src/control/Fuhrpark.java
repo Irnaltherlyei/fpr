@@ -66,6 +66,7 @@ public class Fuhrpark {
         s += "Fuhrpark{";
         for (Map.Entry<Integer,RentDay> i :
                 rentMap.entrySet()) {
+            i.getValue().setSortNormal();
             s += "\nDay " + i.getKey();
             s += "{";
             s += '\n';

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class RentDay {
     private ArrayList<Fahrzeug> rentedOut;
-    private Comparator<Fahrzeug> comparator = Comparator.reverseOrder();
+    private Comparator<Fahrzeug> comparator = Comparator.naturalOrder();
 
     /**
      * Fix car pool with defined cars.
@@ -129,7 +129,7 @@ public class RentDay {
      * Sets the comparator in {@link RentDay#toString()} to sort by price. Ascending.
      */
     public void setSortNormal(){
-        comparator = Comparator.reverseOrder();
+        comparator = Comparator.naturalOrder();
     }
 
     @Override
