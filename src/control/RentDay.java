@@ -17,21 +17,21 @@ public class RentDay {
      * Fix car pool with defined cars.
      */
     private ArrayList<Fahrzeug> carPool = new ArrayList<Fahrzeug>() {{
-        add(new PKW(101, "X1", 100, 420, 5));
-        add(new PKW(102, "X2", 110, 330, 5));
-        add(new PKW(103, "X3", 120, 240, 6));
-        add(new PKW(104, "X4", 130, 150, 6));
+        add(new PKW(101, "X1", 555, 200, 5));
+        add(new PKW(102, "X2", 444, 300, 5));
+        add(new PKW(103, "X3", 333, 400, 6));
+        add(new PKW(104, "X4", 222, 250, 6));
 
-        add(new EPKW(201, "Y1", 200, 260, 5, 600));
-        add(new EPKW(202, "Y2", 225, 270, 5, 800));
-        add(new EPKW(203, "Y3", 250, 280, 5, 1000));
+        add(new EPKW(201, "Y1", 333, 260, 5, 600));
+        add(new EPKW(202, "Y2", 222, 270, 5, 800));
+        add(new EPKW(203, "Y3", 111, 280, 5, 1000));
 
-        add(new LKW(301, "Z1", 500, 150, 10000));
-        add(new LKW(302, "Z2", 520, 150, 12000));
-        add(new LKW(303, "Z3", 540, 150, 14000));
-        add(new LKW(304, "Z4", 560, 150, 16000));
-        add(new LKW(305, "Z5", 580, 150, 18000));
-        add(new LKW(306, "Z6", 600, 150, 20000));
+        add(new LKW(301, "Z1", 600, 150, 10000));
+        add(new LKW(302, "Z2", 580, 140, 12000));
+        add(new LKW(303, "Z3", 560, 130, 14000));
+        add(new LKW(304, "Z4", 540, 180, 16000));
+        add(new LKW(305, "Z5", 520, 170, 18000));
+        add(new LKW(306, "Z6", 500, 160, 20000));
     }};
 
     /**

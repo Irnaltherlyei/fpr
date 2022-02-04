@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class CLI {
 
     private Fuhrpark fp;
-
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
     public CLI(Fuhrpark fp){
         this.fp = fp;
         Scanner scanner = new Scanner(System.in);
@@ -269,16 +270,12 @@ public class CLI {
         RentDay rd = new RentDay();
         rd.add(101);
         rd.add(102);
-        rd.add(201);
-        rd.add(301);
-        rd.add(302);
-        rd.add(303);
-        rd.setSortSpeed();
+        rd.add(103);
+        rd.add(104);
         fp.addRentDay(1,rd);
 
         RentDay rd2 = new RentDay();
-        rd2.add(103);
-        rd2.add(104);
+        rd2.add(201);
         rd2.add(202);
         rd2.add(203);
         fp.addRentDay(2, rd2);
