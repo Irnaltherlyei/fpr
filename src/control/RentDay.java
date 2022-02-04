@@ -132,6 +132,11 @@ public class RentDay {
         comparator = Comparator.naturalOrder();
     }
 
+    /**
+     * Building a string representing a day with rented out cars.
+     *
+     * @return string
+     */
     @Override
     public String toString() {
         return rentedOut.stream().sorted(comparator).map(Object::toString).collect(Collectors.joining("\n"));

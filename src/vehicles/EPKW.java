@@ -17,13 +17,23 @@ public class EPKW extends PKW{
         this.maxReach = maxReach;
     }
 
+    /**
+     * Building a string representing an EPKW.
+     *
+     * @return string
+     */
     @Override
     public String toString() {
         return " EPKW{" +
-                "maxReach=" + maxReach +
-                super.toString() + "}";
+                super.toString() +
+                " maxReach=" + maxReach + " }";
     }
 
+    /**
+     * Get max reach from this EPKW
+     *
+     * @return int
+     */
     public int getMaxReach() {
         return maxReach;
     }

@@ -17,13 +17,23 @@ public class LKW extends Fahrzeug {
         this.cargo = cargo;
     }
 
+    /**
+     * Building a string representing a LKW.
+     *
+     * @return string
+     */
     @Override
     public String toString() {
         return " LKW{" +
-                "cargo=" + cargo +
-                super.toString() + "}";
+                super.toString() +
+                " cargo=" + cargo + " }";
     }
 
+    /**
+     * Get the maximum cargo a LKW can transport.
+     *
+     * @return int
+     */
     public int getCargo() {
         return cargo;
     }

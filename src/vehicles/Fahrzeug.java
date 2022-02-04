@@ -37,6 +37,11 @@ public abstract class Fahrzeug implements Comparable<Fahrzeug> {
             return -1;
     }
 
+    /**
+     * Building a string representing a Fahrzeug.
+     *
+     * @return string
+     */
     @Override
     public String toString() {
         return " ID=" + ID +
@@ -45,18 +50,38 @@ public abstract class Fahrzeug implements Comparable<Fahrzeug> {
                 " speed=" + speed;
     }
 
+    /**
+     * Get the unique ID from a Fahrzeug.
+     *
+     * @return int
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * Get the model name from a Fahrzeug.
+     *
+     * @return string
+     */
     public String getModel() {
         return model;
     }
 
+    /**
+     * Get the rent price a Fahrzeug costs for one day.
+     *
+     * @return int
+     */
     public int getPrice() {
         return price;
     }
 
+    /**
+     * Get the maximum speed a Fahrzeug can reach.
+     *
+     * @return int
+     */
     public int getSpeed() {
         return speed;
     }

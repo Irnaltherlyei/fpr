@@ -17,13 +17,23 @@ public class PKW extends Fahrzeug {
         this.countSeats = countSeats;
     }
 
+    /**
+     * Building a string representing a PKW.
+     *
+     * @return string
+     */
     @Override
     public String toString() {
         return " PKW{" +
-                "countSeats=" + countSeats +
-                super.toString() + "}";
+                super.toString() +
+                " countSeats=" + countSeats + " }";
     }
 
+    /**
+     * Get the number of seats available in the PKW.
+     *
+     * @return int
+     */
     public int getCountSeats() {
         return countSeats;
     }

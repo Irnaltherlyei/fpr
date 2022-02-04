@@ -20,20 +20,20 @@ public class Fuhrpark {
      * Add a day with rented out cars to the Fuhrpark.
      *
      * @param ID as day ID
-     * @param rentDay as day with rented out cars.
+     * @param rentDay as day with rented out cars
      */
-    public void addRentDay(Integer ID, RentDay rentDay){
-        rentMap.putIfAbsent(ID, rentDay);
+    public RentDay addRentDay(Integer ID, RentDay rentDay){
+        return rentMap.putIfAbsent(ID, rentDay);
     }
 
     /**
      * Deletes a day with rented out cars from the Fuhrpark.
      *
-     * @param ID as day ID
-     * @return removed day with rented out cars
+     * @param rd as a day
+     * @return true if day was removed, false otherwise
      */
-    public RentDay deleteRentDay(Integer ID){
-        return rentMap.remove(ID);
+    public boolean deleteRentDay(RentDay rd){
+        return rentMap.values().remove(rd);
     }
 
     /**
@@ -44,22 +44,29 @@ public class Fuhrpark {
     }
 
     /**
-     * Deletes a rent day if it has no cars rented out.
+     * Returns a day with rented cars with the given ID.
+     *
+     * @param ID as day ID
+     * @return a day with rented cars
      */
-    public void check(Integer ID){
-        if(rentMap.get(ID).isEmpty()){
-            rentMap.remove(ID);
-        }
-    }
-
     public RentDay getRentDay(Integer ID){
         return rentMap.get(ID);
     }
 
+    /**
+     * Returns a map represeting all days within the Fuhrpark with rented out cars.
+     *
+     * @return Map with a day ID as key and a day with rented cars as value
+     */
     public HashMap<Integer,RentDay> getMap(){
         return rentMap;
     }
 
+    /**
+     * Building a string representing the Fuhrpark.
+     *
+     * @return string
+     */
     @Override
     public String toString() {
         String s = "";
