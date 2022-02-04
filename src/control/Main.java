@@ -24,21 +24,22 @@ public class Main {
                 String[] splitCommand = command.split("\\s+");
                 switch (splitCommand[0]){
                     case "info":
-                        System.out.println("Arguments inside 'arg' can only occur one time.");
-                        System.out.println("Arguments inside [arg] can occur multiple times.");
-                        System.out.println("Commands with 'arg1;arg2' have predefined options. Use one of the listed to options execute the command.");
-                        System.out.println();
-                        System.out.println(" 1. deleteAllDays                      - delete everything from the Fuhrpark.");
-                        System.out.println(" 2. deleteDay 'DAY_ID'                 - delete a specific day with the given ID from the Fuhrpark.");
-                        System.out.println(" 3. addDay 'DAY_ID' [CAR_ID]           - creates a new empty day in the Fuhrpark.");
-                        System.out.println(" 4. sort 'DAY_ID' 'Normal;Speed'       - sorts the specific ID ascending with the specified field.");
-                        System.out.println(" 5. show                               - Shows a list of the Fuhrpark and all included days.");
-                        System.out.println(" 6. addCarToDay 'DAY_ID' [CAR_ID]      - Adds a car to a day in the Fuhrpark.");
-                        System.out.println(" 7. removeCarFromDay 'CAR_ID' 'DAY_ID' - Removes from a day in the Fuhrpark.");
-                        System.out.println(" 8. sumRentDay 'DAY_ID'                - Sums up all rent collected in a day.");
-                        System.out.println(" 9. sumRent                            - Sums up all rent collected.");
-                        System.out.println("10. exampleFill                        - Fills the Fuhrpark with some days and cars.");
-                        System.out.println("11. exit                               - Terminates the process.");
+                        // System.out.println("Arguments inside 'arg' can only occur one time.");
+                        // System.out.println("Arguments inside [arg] can occur multiple times.");
+                        // System.out.println("Commands with 'arg1;arg2' have predefined options. Use one of the listed to options execute the command.");
+                        // System.out.println();
+                        // System.out.println(" 1. deleteAllDays                      - delete everything from the Fuhrpark.");
+                        // System.out.println(" 2. deleteDay 'DAY_ID'                 - delete a specific day with the given ID from the Fuhrpark.");
+                        // System.out.println(" 3. addDay 'DAY_ID' [CAR_ID]           - creates a new empty day in the Fuhrpark.");
+                        // System.out.println(" 4. sort 'DAY_ID' 'Normal;Speed'       - sorts the specific ID ascending with the specified field.");
+                        // System.out.println(" 5. show                               - Shows a list of the Fuhrpark and all included days.");
+                        // System.out.println(" 6. addCarToDay 'DAY_ID' [CAR_ID]      - Adds a car to a day in the Fuhrpark.");
+                        // System.out.println(" 7. removeCarFromDay 'CAR_ID' 'DAY_ID' - Removes from a day in the Fuhrpark.");
+                        // System.out.println(" 8. sumRentDay 'DAY_ID'                - Sums up all rent collected in a day.");
+                        // System.out.println(" 9. sumRent                            - Sums up all rent collected.");
+                        // System.out.println("10. exampleFill                        - Fills the Fuhrpark with some days and cars.");
+                        // System.out.println("11. exit                               - Terminates the process.");
+                        System.out.println(CLI.info());
                         break;
 
                     case "deletealldays":
