@@ -60,9 +60,9 @@ public class CLI {
                             if (splitCommand[2].equals("speed")) {
                                 System.out.println("Sort by speed. Ascending.");
                                 rd.setSortSpeed();
-                            } else if (splitCommand[2].equals("normal")) {
+                            } else if (splitCommand[2].equals("price")) {
                                 System.out.println("Sort by price. Ascending.");
-                                rd.setSortNormal();
+                                rd.setSortPrice();
                             } else {
                                 System.out.println("No such option as " + splitCommand[2] + ".");
                             }
@@ -150,6 +150,21 @@ public class CLI {
                         System.out.println(fp);
                         break;
 
+                    case "carpool":
+                        System.out.println(new RentDay().poolToString());
+                        break;
+
+                    case "carpoolday":
+                        if(!args(splitCommand, 2, false)){
+                            break;
+                        }
+                        DAY_ID = splitCommand[1];
+                        rd = dayExists(DAY_ID, true);
+                        if(rd != null){
+                            System.out.println(rd.poolToString());
+                        }
+                        break;
+
                     case "examplefill":
                         exampleFill(fp);
                         System.out.println("Filled the park with sample data.");
@@ -200,13 +215,15 @@ public class CLI {
                 .append("\n 1. deleteAllDays                      - delete everything from the Fuhrpark.")
                 .append("\n 2. deleteDay 'DAY_ID'                 - delete a specific day with the given ID from the Fuhrpark.")
                 .append("\n 3. addDay 'DAY_ID' [CAR_ID]           - creates a new empty day in the Fuhrpark.")
-                .append("\n 4. sort 'DAY_ID' 'Normal;Speed'       - sorts the specific ID ascending with the specified field.")
+                .append("\n 4. sort 'DAY_ID' 'Price;Speed'        - sorts the specific ID ascending with the specified field.")
                 .append("\n 5. show                               - Shows a list of the Fuhrpark and all included days.")
                 .append("\n 6. addCarToDay 'DAY_ID' [CAR_ID]      - Adds a car to a day in the Fuhrpark.")
-                .append("\n 7. removeCarFromDay 'CAR_ID' 'DAY_ID' - Removes from a day in the Fuhrpark.")
+                .append("\n 7. removeCarFromDay 'CAR_ID' [DAY_ID] - Removes cars from a day in the Fuhrpark.")
                 .append("\n 8. sumRentDay 'DAY_ID'                - Sums up all rent collected in a day.")
                 .append("\n 9. sumRent                            - Sums up all rent collected.")
                 .append("\n10. exampleFill                        - Fills the Fuhrpark with some days and cars.")
+                .append("\n11. carPool                            - Shows all cars in the Fuhrpark.")
+                .append("\n11. carPoolDay 'DAY_ID'                - Shows all cars left available for the specific day.")
                 .append("\n11. exit                               - Terminates the process.")
                 .toString();
     }
@@ -267,6 +284,8 @@ public class CLI {
      * @param fp as a Fuhrpark
      */
     public static void exampleFill(Fuhrpark fp){
+        fp.deleteAll();
+
         RentDay rd = new RentDay();
         rd.add(101);
         rd.add(102);

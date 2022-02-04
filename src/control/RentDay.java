@@ -16,7 +16,7 @@ public class RentDay {
     /**
      * Fix car pool with defined cars.
      */
-    private ArrayList<Fahrzeug> carPool = new ArrayList<Fahrzeug>() {{
+    public ArrayList<Fahrzeug> carPool = new ArrayList<Fahrzeug>() {{
         add(new PKW(101, "X1", 555, 200, 5));
         add(new PKW(102, "X2", 444, 300, 5));
         add(new PKW(103, "X3", 333, 400, 6));
@@ -128,7 +128,7 @@ public class RentDay {
     /**
      * Sets the comparator in {@link RentDay#toString()} to sort by price. Ascending.
      */
-    public void setSortNormal(){
+    public void setSortPrice(){
         comparator = Comparator.naturalOrder();
     }
 
@@ -140,5 +140,14 @@ public class RentDay {
     @Override
     public String toString() {
         return rentedOut.stream().sorted(comparator).map(Object::toString).collect(Collectors.joining("\n"));
+    }
+
+    public String poolToString(){
+        String s = "";
+        for (Fahrzeug f :
+                carPool) {
+            s += f + "\n";
+        }
+        return s;
     }
 }
