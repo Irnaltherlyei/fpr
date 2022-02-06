@@ -26,7 +26,7 @@ public class MultithreadingAufgabe {
             t.start();
             threadPool.add(t);
         }
-        // Durch .join() wird das Hauptprogramm gestoppt bis jeder Thread beendet wurde.
+        // Durch .join() wird das Hauptprogramm gestoppt bis der angesprochene Thread beendet ist.
         for (Thread t :
                 threadPool) {
             t.join();
