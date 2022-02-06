@@ -6,18 +6,18 @@ import java.util.Map;
 /**
  * This class represents a carpool renting out different cars.
  */
-public class Fuhrpark {
+public class Carpark {
     private HashMap<Integer, RentDay> rentMap;
 
     /**
      * Class constructor creates a hashmap with day number as key and a {@link RentDay} as value.
      */
-    public Fuhrpark() {
+    public Carpark() {
         rentMap = new HashMap<Integer, RentDay>();
     }
 
     /**
-     * Add a day with rented out cars to the Fuhrpark.
+     * Add a day with rented out cars to the Carpark.
      *
      * @param ID as day ID
      * @param rentDay as day with rented out cars
@@ -27,7 +27,7 @@ public class Fuhrpark {
     }
 
     /**
-     * Deletes a day with rented out cars from the Fuhrpark.
+     * Deletes a day with rented out cars from the Carpark.
      *
      * @param rd as a day
      * @return true if day was removed, false otherwise
@@ -54,7 +54,7 @@ public class Fuhrpark {
     }
 
     /**
-     * Returns a map represeting all days within the Fuhrpark with rented out cars.
+     * Returns a map represeting all days within the Carpark with rented out cars.
      *
      * @return Map with a day ID as key and a day with rented cars as value
      */
@@ -63,14 +63,14 @@ public class Fuhrpark {
     }
 
     /**
-     * Building a string representing the Fuhrpark.
+     * Building a string representing the Carpark.
      *
      * @return string
      */
     @Override
     public String toString() {
         String s = "";
-        s += "Fuhrpark{";
+        s += "Carpark{";
         for (Map.Entry<Integer,RentDay> i :
                 rentMap.entrySet()) {
             s += "\nDay " + i.getKey();

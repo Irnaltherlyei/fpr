@@ -4,15 +4,14 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * This class is representing a command line interface. It controls the Fuhrpark class.
+ * This class is representing a command line interface. It controls the Carpark class.
  */
 public class CLI {
 
-    private Fuhrpark fp;
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public CLI(Fuhrpark fp){
-        this.fp = fp;
+    private Carpark cp;
+
+    public CLI(Carpark cp){
+        this.cp = cp;
         Scanner scanner = new Scanner(System.in);
         System.out.println(start());
         try{
@@ -26,7 +25,7 @@ public class CLI {
 
                     case "deletealldays":
                         System.out.println("Deleted all days.");
-                        fp.deleteAll();
+                        cp.deleteAll();
                         break;
 
                     case "deleteday":
@@ -34,7 +33,7 @@ public class CLI {
                             break;
                         }
                         String DAY_ID = splitCommand[1];
-                        if(fp.deleteRentDay(dayExists(DAY_ID, true))) {
+                        if(cp.deleteRentDay(dayExists(DAY_ID, true))) {
                             System.out.println("Deleted day " + DAY_ID);
                         }
                         break;
@@ -100,7 +99,7 @@ public class CLI {
                                 }
                             }
                         }
-                        fp.addRentDay(day, rd);
+                        cp.addRentDay(day, rd);
                         break;
 
                     case "removecarfromday":
@@ -139,7 +138,7 @@ public class CLI {
                     case "sumrent":
                         Integer sum = 0;
                         for (Map.Entry<Integer,RentDay> i :
-                                fp.getMap().entrySet()) {
+                                cp.getMap().entrySet()) {
                             sum += i.getValue().sumRent();
                         }
                         System.out.println("Rent collected is " + sum);
@@ -147,7 +146,7 @@ public class CLI {
 
 
                     case "show":
-                        System.out.println(fp);
+                        System.out.println(cp);
                         break;
 
                     case "carpool":
@@ -166,7 +165,7 @@ public class CLI {
                         break;
 
                     case "examplefill":
-                        exampleFill(fp);
+                        exampleFill(cp);
                         System.out.println("Filled the park with sample data.");
                         break;
 
@@ -212,17 +211,17 @@ public class CLI {
                 .append("\nArguments inside [arg] can occur multiple times.")
                 .append("\nCommands with 'arg1;arg2' have predefined options. Use one of the listed to options execute the command.")
                 .append("\n")
-                .append("\n 1. deleteAllDays                      - delete everything from the Fuhrpark.")
-                .append("\n 2. deleteDay 'DAY_ID'                 - delete a specific day with the given ID from the Fuhrpark.")
-                .append("\n 3. addDay 'DAY_ID' [CAR_ID]           - creates a new empty day in the Fuhrpark.")
+                .append("\n 1. deleteAllDays                      - delete everything from the Carpark.")
+                .append("\n 2. deleteDay 'DAY_ID'                 - delete a specific day with the given ID from the Carpark.")
+                .append("\n 3. addDay 'DAY_ID' [CAR_ID]           - creates a new empty day in the Carpark.")
                 .append("\n 4. sort 'DAY_ID' 'Price;Speed'        - sorts the specific ID ascending with the specified field.")
-                .append("\n 5. show                               - Shows a list of the Fuhrpark and all included days.")
-                .append("\n 6. addCarToDay 'DAY_ID' [CAR_ID]      - Adds a car to a day in the Fuhrpark.")
-                .append("\n 7. removeCarFromDay 'CAR_ID' [DAY_ID] - Removes cars from a day in the Fuhrpark.")
+                .append("\n 5. show                               - Shows a list of the Carpark and all included days.")
+                .append("\n 6. addCarToDay 'DAY_ID' [CAR_ID]      - Adds a car to a day in the Carpark.")
+                .append("\n 7. removeCarFromDay 'CAR_ID' [DAY_ID] - Removes cars from a day in the Carpark.")
                 .append("\n 8. sumRentDay 'DAY_ID'                - Sums up all rent collected in a day.")
                 .append("\n 9. sumRent                            - Sums up all rent collected.")
-                .append("\n10. exampleFill                        - Fills the Fuhrpark with some days and cars.")
-                .append("\n11. carPool                            - Shows all cars in the Fuhrpark.")
+                .append("\n10. exampleFill                        - Fills the Carpark with some days and cars.")
+                .append("\n11. carPool                            - Shows all cars in the Carpark.")
                 .append("\n11. carPoolDay 'DAY_ID'                - Shows all cars left available for the specific day.")
                 .append("\n11. exit                               - Terminates the process.")
                 .toString();
@@ -246,13 +245,13 @@ public class CLI {
     }
 
     /**
-     * Checks if a day exits in the Fuhrpark.
+     * Checks if a day exits in the Carpark.
      *
      * @param s as a String representing a DAY_ID
      * @return a RentDay if existing or null
      */
     private RentDay dayExists(String s, boolean log){
-        RentDay rd = fp.getRentDay(isInt(s));
+        RentDay rd = cp.getRentDay(isInt(s));
         if(rd != null){
             return rd;
         } else {
@@ -279,24 +278,24 @@ public class CLI {
     }
 
     /**
-     * Fills the Fuhrpark with some cars and tests some functions.
+     * Fills the Carpark with some cars and tests some functions.
      *
-     * @param fp as a Fuhrpark
+     * @param cp as a Carpark
      */
-    public static void exampleFill(Fuhrpark fp){
-        fp.deleteAll();
+    public static void exampleFill(Carpark cp){
+        cp.deleteAll();
 
         RentDay rd = new RentDay();
         rd.add(101);
         rd.add(102);
         rd.add(103);
         rd.add(104);
-        fp.addRentDay(1,rd);
+        cp.addRentDay(1,rd);
 
         RentDay rd2 = new RentDay();
         rd2.add(201);
         rd2.add(202);
         rd2.add(203);
-        fp.addRentDay(2, rd2);
+        cp.addRentDay(2, rd2);
     }
 }

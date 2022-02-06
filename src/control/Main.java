@@ -6,12 +6,12 @@ package control;
 public class Main {
 
     /**
-     * Creates a Fuhrpark and starts the command line interface implemented in {@link CLI} class.
+     * Creates a Carpark and starts the command line interface implemented in {@link CLI} class.
      * @param args not used yet.
      */
     public static void main(String[] args) {
-        Fuhrpark fp = new Fuhrpark();
+        Carpark cp = new Carpark();
 
-        new CLI(fp);
+        new CLI(cp);
     }
 }
