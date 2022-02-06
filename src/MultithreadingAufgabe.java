@@ -1,7 +1,12 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.Thread.sleep;
 
 public class MultithreadingAufgabe {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         class Counter {
             private double c = 0.0;
             void up() {
@@ -16,21 +21,33 @@ public class MultithreadingAufgabe {
                 return c;
             }
         }
-        ArrayList<Thread> threadPool = new ArrayList<Thread>();
+        ArrayList<Thread> pool = new ArrayList<>();
+        ExecutorService es = Executors.newFixedThreadPool(10);
         Counter count = new Counter();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             Thread t = new Thread(() -> {
                 count.up();
                 count.down();
             });
+            //es.submit(t);
             t.start();
+            pool.add(t);
+        }
+
+        try {
             Thread.sleep(10);
-            t.interrupt();
-            threadPool.add(t);
+            //System.out.println(es.awaitTermination(10, TimeUnit.MILLISECONDS));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         for (Thread t :
-                threadPool) {
-            t.join();
+                pool) {
+            try{
+                //t.join();
+                t.interrupt();
+            } catch (Exception e){
+
+            }
         }
         System.out.println("Schlusswert: " + count.getC());
     }
